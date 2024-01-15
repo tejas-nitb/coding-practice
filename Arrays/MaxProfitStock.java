@@ -1,10 +1,9 @@
-public static int maximumProfit(ArrayList<Integer> prices){
-        int answer = 0;
-        int n = prices.size();
+public static int maxProfitStock(int[] arr) {
         int minimum = Integer.MAX_VALUE;
-        for(int i=0; i<n ; i++) {
-            answer = Math.max(answer, prices.get(i)-minimum);
-            minimum = Math.min(minimum, prices.get(i));
+        int result = 0;
+        for (int j : arr) {
+            result = Math.max(result, j - minimum);
+            minimum = Math.min(minimum, j);
         }
-        return answer;
-    }
+        return result;
+}
