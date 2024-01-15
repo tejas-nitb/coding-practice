@@ -1,10 +1,12 @@
-public static boolean findDuplicate(int[] arr) {
-        Set<Integer> integers = new HashSet<>();
-        for(Integer i: arr) {
-            if(integers.contains(i)) {
+public static boolean findDuplicates(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+            int index = arr[i] % n;
+            arr[index] += n;
+        }
+        for (int j : arr) {
+            if (j / n >= 2) {
                 return true;
-            } else {
-                integers.add(i);
             }
         }
         return false;
