@@ -1,17 +1,14 @@
 public int[] productExceptSelf(int[] nums) {
-        int[] left = new int[nums.length];
-        int[] right = new int[nums.length];
-        left[0] = 1;
-        for (int i = 1; i < nums.length; i++) {
-            left[i] = left[i-1] * nums[i-1];
+        int length = nums.length;
+        int[] product = new int[length];
+        product[0] = 1;
+        for(int i=1; i < length ; i++) {
+            product[i] = product[i-1] * nums[i-1];
         }
-        right[nums.length - 1] = 1;
-        for (int i = nums.length - 2; i >= 0; i--) {
-            right[i] = right[i+1] * nums[i+1];
-        }
-        int[] product = new int[nums.length];
-        for (int i = 0; i < product.length; i++) {
-            product[i] = left[i] * right[i];
+        int right = 1;
+        for(int i=length-1; i >= 0 ; i--) {
+            product[i] = product[i] * right;
+            right = right * nums[i];
         }
         return product;
-    }
+}
